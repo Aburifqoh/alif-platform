@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Home, ShoppingBag, BedDouble, Settings, Image, Calendar, Users, LogOut, Heart, Bell } from 'lucide-react';
+import { Home, ShoppingBag, BedDouble, Settings, Image, Calendar, Users, LogOut, Heart, Bell, FileText } from 'lucide-react';
 
 export default function AdminSidebar() {
   const routes = [
@@ -12,6 +12,7 @@ export default function AdminSidebar() {
     { label: 'Hostel Procedure', icon: Calendar, href: '/hostel/procedure' },
     { label: 'Gallery', icon: Image, href: '/gallery' },
     { label: 'Programmes', icon: Calendar, href: '/programmes' },
+    { label: 'Articles Review', icon: FileText, href: '/articles' },
     { label: 'Notifications', icon: Bell, href: '/notifications' },
     { label: 'Users & Roles', icon: Users, href: '/users' },
     { label: 'Settings', icon: Settings, href: '/settings' },

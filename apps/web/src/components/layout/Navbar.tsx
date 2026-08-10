@@ -29,6 +29,7 @@ const NAV_LINKS = [
   },
   { label: "Gallery", href: "/gallery" },
   { label: "News & Events", href: "/events" },
+  { label: "Articles", href: "/articles" },
   { label: "Mosque", href: "/mosque" },
   { label: "Contact", href: "/contact" },
 ];

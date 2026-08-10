@@ -89,7 +89,7 @@ importers:
         version: 9.39.5(jiti@2.7.0)
       eslint-config-next:
         specifier: 16.2.12
-        version: 16.2.12(@typescript-eslint/parser@8.66.0(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3))(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
+        version: 16.2.12(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
       tailwindcss:
         specifier: ^4
         version: 4.3.3
@@ -157,6 +157,9 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
     devDependencies:
+      '@cloudflare/workerd-windows-64':
+        specifier: ^1.20260810.1
+        version: 1.20260810.1
       '@opennextjs/cloudflare':
         specifier: ^1.20.2
         version: 1.20.2(next@16.2.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(wrangler@4.120.0)
@@ -177,7 +180,7 @@ importers:
         version: 9.39.5(jiti@2.7.0)
       eslint-config-next:
         specifier: 16.2.12
-        version: 16.2.12(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
+        version: 16.2.12(@typescript-eslint/parser@8.66.0(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3))(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
       tailwindcss:
         specifier: ^4
         version: 4.3.3
@@ -647,6 +650,12 @@ packages:
 
   '@cloudflare/workerd-windows-64@1.20260801.1':
     resolution: {integrity: sha512-2oQz+Ksu4ji6e/+ZoYX+tWQEcxAii2p7l+iR8kx48W1llMalaufAsmVxTlk+3/vrM7D3/2c0iK448e0UQTcIMg==}
+    engines: {node: '>=16'}
+    cpu: [x64]
+    os: [win32]
+
+  '@cloudflare/workerd-windows-64@1.20260810.1':
+    resolution: {integrity: sha512-sfyJSmybe5lcptEorcXjR/yLSWh5u7wvcWaAN1uA8fNS4rfXzDxgb0v2CZ+P74jPWbKIiM5v8kGsdac+Gr/ang==}
     engines: {node: '>=16'}
     cpu: [x64]
     os: [win32]
@@ -5411,6 +5420,8 @@ snapshots:
 
   '@cloudflare/workerd-windows-64@1.20260801.1':
     optional: true
+
+  '@cloudflare/workerd-windows-64@1.20260810.1': {}
 
   '@cspotcode/source-map-support@0.8.1':
     dependencies:
