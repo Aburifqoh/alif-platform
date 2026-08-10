@@ -237,7 +237,7 @@ export default async function HostelPage() {
               <div>
                 <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Hostel Address</p>
                 <p className="text-gray-800 dark:text-gray-200 whitespace-pre-wrap text-sm leading-relaxed">
-                  {settings?.hostel_address || "ALIF Headquarters,\nAsa Dam, Ilorin, Kwara State."}
+                  {settings?.hostel_address || "first transformer safari, and beside ibro zee sportarena malete, Kwara State, Nigeria"}
                 </p>
               </div>
               <div>
