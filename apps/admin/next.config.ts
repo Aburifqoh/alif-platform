@@ -8,10 +8,8 @@ const nextConfig: NextConfig = {
       { hostname: "lh3.googleusercontent.com" },
     ],
   },
-  outputFileTracingRoot: path.join(process.cwd(), "../../"),
-  turbopack: {
-    root: path.join(process.cwd(), "../../"),
-  },
+
+
   output: "standalone",
 };
 
