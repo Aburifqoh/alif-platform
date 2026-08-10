@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node -e \"const fs=require('fs'); fs.cpSync('.next/standalone/apps/web', '.next/standalone', {recursive: true});\"",
     "start": "next start",
     "lint": "eslint",
     "fix-standalone": "node -e \"const fs=require('fs'); fs.cpSync('.next/standalone/apps/web', '.next/standalone', {recursive: true});\"",
