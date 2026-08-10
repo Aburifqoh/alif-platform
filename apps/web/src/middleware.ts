@@ -17,45 +17,53 @@ const ROLE_ROUTES: Record<string, string[]> = {
 };
 
 export async function middleware(request: NextRequest) {
-  let response = NextResponse.next({ request });
+  try {
+    let response = NextResponse.next({ request });
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return request.cookies.getAll();
-        },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
-          response = NextResponse.next({ request });
-          cookiesToSet.forEach(({ name, value, options }) =>
-            response.cookies.set(name, value, options)
-          );
-        },
-      },
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
+      return new NextResponse("Middleware Error: process.env.NEXT_PUBLIC_SUPABASE_URL is not defined. process.env keys: " + Object.keys(process.env).join(", "), { status: 500 });
     }
-  );
 
-  const { data: { user } } = await supabase.auth.getUser();
-  const pathname = request.nextUrl.pathname;
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          getAll() {
+            return request.cookies.getAll();
+          },
+          setAll(cookiesToSet) {
+            cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
+            response = NextResponse.next({ request });
+            cookiesToSet.forEach(({ name, value, options }) =>
+              response.cookies.set(name, value, options)
+            );
+          },
+        },
+      }
+    );
 
-  // Check if route requires auth
-  const requiresAuth = PROTECTED_ROUTES.some((route) => pathname.startsWith(route));
+    const { data: { user } } = await supabase.auth.getUser();
+    const pathname = request.nextUrl.pathname;
 
-  if (requiresAuth && !user) {
-    const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("redirect", pathname);
-    return NextResponse.redirect(loginUrl);
+    // Check if route requires auth
+    const requiresAuth = PROTECTED_ROUTES.some((route) => pathname.startsWith(route));
+
+    if (requiresAuth && !user) {
+      const loginUrl = new URL("/login", request.url);
+      loginUrl.searchParams.set("redirect", pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+
+    // If user is logged in and trying to access auth pages, redirect to portal
+    if (user && (pathname === "/login" || pathname === "/register")) {
+      return NextResponse.redirect(new URL("/portal", request.url));
+    }
+
+    return response;
+  } catch (err: any) {
+    return new NextResponse(`Middleware caught exception: ${err?.message || err}\nStack: ${err?.stack || "none"}`, { status: 500 });
   }
-
-  // If user is logged in and trying to access auth pages, redirect to portal
-  if (user && (pathname === "/login" || pathname === "/register")) {
-    return NextResponse.redirect(new URL("/portal", request.url));
-  }
-
-  return response;
 }
 
 export const config = {
