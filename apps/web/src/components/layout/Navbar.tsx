@@ -23,6 +23,10 @@ const NAV_LINKS = [
     label: "Programmes",
     href: "/programmes",
   },
+  {
+    label: "Hostel",
+    href: "/hostel",
+  },
   { label: "Gallery", href: "/gallery" },
   { label: "News & Events", href: "/events" },
   { label: "Mosque", href: "/mosque" },
