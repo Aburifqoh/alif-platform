@@ -8,10 +8,8 @@
   "site": {
     "bucket": ".open-next/assets"
   },
-  "r2_buckets": [
-    {
-      "binding": "ALIF_MEDIA",
-      "bucket_name": "alif-media-production"
-    }
-  ]
+  "vars": {
+    "NEXT_PUBLIC_SUPABASE_URL": "https://gtpmepnxfephxomwnajq.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd0cG1lcG54ZmVwaHhvbXduYWpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYwOTQ3MTEsImV4cCI6MjEwMTY3MDcxMX0.V7c8m93z1mfXNSZozbuDbKZha8pL4Z9YmfnzqFvAQhw"
+  }
 }
