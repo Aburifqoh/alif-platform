@@ -1,0 +1,47 @@
+{
+  "name": "@alif/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "fix-standalone": "node -e \"const fs=require('fs'); fs.cpSync('.next/standalone/apps/web', '.next/standalone', {recursive: true});\"",
+    "preview": "next build && pnpm fix-standalone && opennextjs-cloudflare build --skipBuild --config wrangler.json && opennextjs-cloudflare preview --config wrangler.json",
+    "deploy": "next build && pnpm fix-standalone && opennextjs-cloudflare build --skipBuild --config wrangler.json && opennextjs-cloudflare deploy --config wrangler.json",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+  },
+  "dependencies": {
+    "@alif/database": "workspace:*",
+    "@alif/types": "workspace:*",
+    "@alif/validation": "workspace:*",
+    "@aws-sdk/client-s3": "^3.1106.0",
+    "@aws-sdk/s3-request-presigner": "^3.1106.0",
+    "@supabase/ssr": "^0.12.4",
+    "@supabase/supabase-js": "^2.111.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.43.0",
+    "lucide-react": "^1.28.0",
+    "next": "16.2.12",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "resend": "^6.18.1",
+    "shadcn": "^4.16.0",
+    "tailwind-merge": "^3.6.0",
+    "tw-animate-css": "^1.4.0"
+  },
+  "devDependencies": {
+    "@opennextjs/cloudflare": "^1.20.2",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.12",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "wrangler": "^4.116.0"
+  }
+}

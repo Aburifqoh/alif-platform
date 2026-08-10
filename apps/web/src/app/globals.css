@@ -1,0 +1,446 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   ALIF — Design Tokens
+   Al-Ibaanah Islamic Foundation
+   Brand: Deep Emerald Green · Gold · Cream · Charcoal
+   ============================================================ */
+
+:root {
+    /* Flyer Brand Colors */
+  --brand-red:        #B83A26;
+  --brand-red-dark:   #8B1E14;
+  --brand-red-light:  #D65A46;
+  --brand-red-tint:   #FAD4CD;
+  --brand-red-subtle: #FDF3F1;
+
+  --brand-blue:       #3B6B88;
+  --brand-blue-dark:  #24465B;
+  --brand-blue-light: #5E9CB9;
+  --brand-blue-tint:  #D5E5ED;
+  --brand-blue-subtle:#F0F6F9;
+
+  --brand-gold:       #D4A017;
+  --brand-gold-dark:  #9C740D;
+  --brand-gold-light: #EFCA5D;
+  --brand-gold-tint:  #FDF3D9;
+  --brand-gold-subtle:#FEFCF5;
+
+  --brand-cream:      #FDFBF7;
+  --brand-charcoal:   #2C2C2C;
+
+  /* Semantic Colors */
+  --bg-base:        #ffffff;
+  --bg-subtle:      var(--brand-cream);
+  --bg-muted:       var(--cream-dark);
+  --bg-dark-base:   #0d1117;
+  --bg-dark-subtle: #161b22;
+  --bg-dark-muted:  #21262d;
+
+  --text-primary:   var(--charcoal);
+  --text-secondary: var(--charcoal-light);
+  --text-muted:     #718096;
+  --text-inverse:   #ffffff;
+
+  --border:         #e2e8f0;
+  --border-subtle:  #edf2f7;
+  --border-emphasis:#cbd5e0;
+
+  --success:        #10b981;
+  --warning:        #f59e0b;
+  --danger:         #ef4444;
+  --info:           #3b82f6;
+
+  /* Glass morphism */
+  --glass-bg:       rgba(255, 255, 255, 0.72);
+  --glass-border:   rgba(255, 255, 255, 0.48);
+  --glass-dark-bg:  rgba(13, 17, 23, 0.80);
+  --glass-dark-border: rgba(255, 255, 255, 0.08);
+
+  /* Shadows */
+  --shadow-xs:  0 1px 2px 0 rgba(184, 58, 38, 0.04);
+  --shadow-sm:  0 2px 8px -2px rgba(184, 58, 38, 0.06), 0 1px 2px -1px rgba(184, 58, 38, 0.04);
+  --shadow-md:  0 8px 24px -4px rgba(184, 58, 38, 0.08), 0 4px 8px -4px rgba(184, 58, 38, 0.04);
+  --shadow-lg:  0 20px 48px -8px rgba(184, 58, 38, 0.12), 0 8px 16px -8px rgba(184, 58, 38, 0.06);
+  --shadow-xl:  0 32px 64px -12px rgba(184, 58, 38, 0.16);
+  --shadow-gold: 0 8px 24px -4px rgba(184, 134, 11, 0.20);
+
+  /* Radii */
+  --radius-sm:  0.375rem;
+  --radius-md:  0.625rem;
+  --radius-lg:  0.875rem;
+  --radius-xl:  1.25rem;
+  --radius-2xl: 1.75rem;
+  --radius-3xl: 2.25rem;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --ease-spring:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth:  cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast:   all 0.15s var(--ease-smooth);
+  --transition-base:   all 0.25s var(--ease-smooth);
+  --transition-slow:   all 0.4s  var(--ease-spring);
+
+  /* shadcn/ui compatibility tokens */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: var(--brand-red);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border-radius: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: var(--brand-gold);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: var(--brand-red);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: #b8860b;
+}
+
+/* ============================================================
+   DARK MODE OVERRIDES
+   ============================================================ */
+
+[data-theme="dark"] {
+  --bg-base:        #0d1117;
+  --bg-subtle:      #161b22;
+  --bg-muted:       #21262d;
+  --text-primary:   #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted:     #6e7681;
+  --border:         rgba(255,255,255,0.10);
+  --border-subtle:  rgba(255,255,255,0.06);
+  --border-emphasis:rgba(255,255,255,0.18);
+  --glass-bg:       rgba(13, 17, 23, 0.80);
+  --glass-border:   rgba(255, 255, 255, 0.08);
+  --shadow-md:      0 8px 24px -4px rgba(0, 0, 0, 0.40);
+  --emerald-tint:   rgba(184, 58, 38, 0.25);
+  --gold-tint:      rgba(184, 134, 11, 0.20);
+
+  /* shadcn dark */
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.18 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.18 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: #15803d;
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border-radius: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: #d4a017;
+  --sidebar: oklch(0.18 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: #15803d;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: #d4a017;
+}
+
+/* ============================================================
+   TAILWIND v4 THEME REGISTRATION
+   ============================================================ */
+
+@theme {
+  /* Colors */
+  --color-brand-red:        var(--brand-red);
+  --color-brand-red-dark:   var(--brand-red-dark);
+  --color-brand-red-light:  var(--brand-red-light);
+  --color-brand-red-tint:   var(--brand-red-tint);
+  --color-brand-red-subtle: var(--brand-red-subtle);
+
+  --color-brand-blue:       var(--brand-blue);
+  --color-brand-blue-dark:  var(--brand-blue-dark);
+  --color-brand-blue-light: var(--brand-blue-light);
+  --color-brand-blue-tint:  var(--brand-blue-tint);
+  --color-brand-blue-subtle:var(--brand-blue-subtle);
+
+  --color-brand-gold:       var(--brand-gold);
+  --color-brand-gold-dark:  var(--brand-gold-dark);
+  --color-brand-gold-light: var(--brand-gold-light);
+  --color-brand-gold-tint:  var(--brand-gold-tint);
+  --color-brand-gold-subtle:var(--brand-gold-subtle);
+
+  --color-brand-cream:      var(--brand-cream);
+  --color-brand-charcoal:   var(--brand-charcoal);
+
+  /* Fonts */
+  --font-sans:    'Inter', system-ui, sans-serif;
+  --font-headers: 'Outfit', system-ui, sans-serif;
+  --font-arabic:  'Amiri', 'Times New Roman', serif;
+  --font-quran:   'Amiri Quran', 'Amiri', serif;
+
+  /* Shadows */
+  --shadow-xs:    var(--shadow-xs);
+  --shadow-sm:    var(--shadow-sm);
+  --shadow-md:    var(--shadow-md);
+  --shadow-lg:    var(--shadow-lg);
+  --shadow-xl:    var(--shadow-xl);
+  --shadow-gold:  var(--shadow-gold);
+
+  /* Animations */
+  --animate-fade-up:   fadeUp 0.5s var(--ease-spring) forwards;
+  --animate-fade-in:   fadeIn 0.4s ease-out forwards;
+  --animate-scale-in:  scaleIn 0.3s var(--ease-spring) forwards;
+  --animate-slide-right: slideRight 0.4s var(--ease-spring) forwards;
+  --animate-float:     float 6s ease-in-out infinite;
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0);    }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1);    }
+  }
+  @keyframes slideRight {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0);     }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px);  }
+    50%       { transform: translateY(-12px); }
+  }
+  @keyframes shimmer {
+    from { background-position: -200% center; }
+    to   { background-position:  200% center; }
+  }
+  @keyframes pulse-ring {
+    0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(184,58,38,0.4); }
+    70%  { transform: scale(1);    box-shadow: 0 0 0 12px rgba(184,58,38,0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(184,58,38,0);   }
+  }
+}
+
+/* ============================================================
+   CUSTOM UTILITIES
+   ============================================================ */
+
+@utility animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-border);
+}
+
+@utility gradient-emerald {
+  background: linear-gradient(135deg, var(--brand-red-dark) 0%, var(--brand-red) 60%, var(--brand-red-light) 100%);
+}
+
+@utility gradient-gold {
+  background: linear-gradient(135deg, #92610a 0%, var(--gold) 50%, var(--gold-bright) 100%);
+}
+
+@utility gradient-hero {
+  background: linear-gradient(
+    160deg,
+    var(--brand-red-dark) 0%,
+    var(--brand-red) 40%,
+    var(--charcoal) 100%
+  );
+}
+
+@utility text-gradient-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold-bright), var(--gold-light));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility text-gradient-emerald {
+  background: linear-gradient(135deg, var(--brand-red), var(--brand-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility shimmer-text {
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+@utility card-hover {
+  transition: var(--transition-base);
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* ============================================================
+   BASE LAYER
+   ============================================================ */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply scroll-smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  @media (max-width: 768px) {
+    html, body {
+      overflow-x: clip;
+      width: 100%;
+    }
+  }
+
+  /* Headings use Outfit */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headers);
+    letter-spacing: -0.02em;
+  }
+
+  /* Arabic text direction */
+  [lang="ar"], .ar, .arabic {
+    font-family: var(--font-arabic);
+    direction: rtl;
+    text-align: right;
+  }
+
+  /* Focus ring */
+  :focus-visible {
+    outline: 2px solid var(--brand-red-light);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--brand-red-tint);
+    color: var(--brand-red-dark);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--brand-red);
+    border-radius: 999px;
+    opacity: 0.5;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--brand-red); }
+}
+
+/* ============================================================
+   COMPONENT HELPERS
+   ============================================================ */
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Quranic script utility */
+.font-quran {
+  font-family: 'Amiri Quran', 'Amiri', serif;
+  font-size: 1.5rem;
+  line-height: 3;
+  direction: rtl;
+  text-align: right;
+  letter-spacing: 0;
+}
+
+/* Islamic pattern overlay */
+.islamic-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23B83A26' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Prayer time widget pulse */
+.prayer-pulse {
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-emphasis), transparent);
+}
+
+@theme inline {
+  --font-heading: var(--font-headers);
+  --font-sans: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border-radius);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}

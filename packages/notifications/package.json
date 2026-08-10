@@ -1,0 +1,14 @@
+{
+  "name": "@alif/notifications",
+  "version": "0.1.0",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "private": true,
+  "dependencies": {
+    "twilio": "^5.0.4",
+    "resend": "^3.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
